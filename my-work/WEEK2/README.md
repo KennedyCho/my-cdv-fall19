@@ -4,7 +4,7 @@ Critical Questions for Big Data by Danah Boyd and Kate Crawford
 
 Why does Bowker say "'Raw data is both and oxymoron and a bad idea'" ? (pp. 663)
 
-The quote "'Raw data is both and oxymoron and a bad idea'" ? (pp. 663) refers to the 'untouched' nature of datasets prior to analysis. However, this assumption that data is raw is extremely misleading and will create an opening for individuals and groups to take a dataset's analysis without critically questioning the validity. 
+The quote "'Raw data is both and oxymoron and a bad idea'" ? (pp. 663) refers to the 'untouched' nature of datasets prior to analysis. However, this assumption that data is raw is extremely misleading and will create an opening for individuals and groups to take a dataset's analysis without critically questioning the validity.
 
 What could be meant by the quote "'accounting tools [...] do not simply aid the measurement of economic activity, they shape the reality they measure'"? Try draw parallels to the CompStat system from the Reply All Podcast.
 
@@ -18,5 +18,3 @@ Twitter's data is limited in that the company gives the impression of full acces
 If you don't need to login to obtain certain data, then it is public and free to use. Or isn't it? Please share your opinion.
 
 I believe that 'public' data should be free for use; however, this use must be closely monitored and regulated. Government policies and legislation must catch up in order for individual persons and groups are protected under the law and therefore able to pursue legal action in violations of personal liberties.
-
-No prompts here, but a very well written chapter that is relevant to everything we will be talking about this semester. Please enjoy.
