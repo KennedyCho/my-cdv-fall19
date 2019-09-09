@@ -33,7 +33,7 @@ function display_box() {
     //name the div class
     box.className = 'box_style';
     //add div box to body of html
-    document.body.appendChild(box)
+    document.getElementById('container').appendChild(box)
 
   }
 
