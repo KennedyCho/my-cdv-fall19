@@ -15,4 +15,6 @@ Twitter's data is limited in that the company gives the impression of full acces
 
 If you don't need to login to obtain certain data, then it is public and free to use. Or isn't it? Please share your opinion.
 
+I believe that 'public' data should be free for use; however, this use must be closely monitored and regulated. Government policies and legislation must catch up in order for individual persons and groups are protected under the law and therefore able to pursue legal action in violations of personal liberties. 
+
 No prompts here, but a very well written chapter that is relevant to everything we will be talking about this semester. Please enjoy.
