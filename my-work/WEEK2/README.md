@@ -2,8 +2,8 @@
 
 Due Monday (2019/09/09):
 
-Listen to two parts of Reply All's 'The Crime Machine' Podcast. 
-Read Critical Questions for Big Data by danah boyd and Kate Crawford. 
+Listen to two parts of Reply All's 'The Crime Machine' Podcast.
+Read Critical Questions for Big Data by Danah Boyd and Kate Crawford.
 
 For each prompt, write no more than a short paragraph:
 Introduction and Chapter 2
@@ -16,6 +16,8 @@ Section 5 (pp. 671)
 If you don't need to login to obtain certain data, then it is public and free to use. Or isn't it? Please share your opinion.
 
 Due this Wednesday (2019/09/11):
+
+Watch talk by Mike Bostock, creator of D3js.
 
 Create a Google Form collecting data of the "linear scale" type (like we did in this week's Lab)
 collect responses from at least 10 people (e.g. send it to people in this class room (I can help distribute))
