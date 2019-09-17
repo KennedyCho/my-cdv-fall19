@@ -1,0 +1,10 @@
+/* styling in place beforehand don't worry about it */
+/* don't touch this now */
+body{
+  width, height: 100%;
+  margin: 0;
+}
+#viz{
+  border: 1px black solid;
+  background-color: lightblue;
+}
