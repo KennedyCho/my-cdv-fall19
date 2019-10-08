@@ -1,0 +1,488 @@
+[
+    {
+        "timestamp": "2019-09-11T00:17:47.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-11T01:04:32.000Z",
+        "location": "subway",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-11T01:35:57.000Z",
+        "location": "cafe",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-11T03:14:30.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-11T04:17:20.000Z",
+        "location": "library",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-11T06:12:14.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T02:17:46.773Z",
+        "location": "class",
+        "typeOfSurface": "laptop screen",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T03:47:04.685Z",
+        "location": "class",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T04:33:38.537Z",
+        "location": "cafe",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-12T04:41:02.061Z",
+        "location": "cafe",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T05:51:15.158Z",
+        "location": "cafeteria ",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T06:01:58.947Z",
+        "location": "library ",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T07:29:30.688Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-12T08:33:02.762Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-12T08:33:18.569Z",
+        "location": "subway ",
+        "typeOfSurface": "window",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T11:14:06.531Z",
+        "location": "subway ",
+        "typeOfSurface": "window",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-12T11:14:20.158Z",
+        "location": "restaurant",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-13T11:35:57.000Z",
+        "location": "restaurant",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-13T02:55:14.961Z",
+        "location": "restaurant",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-13T02:55:48.332Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-13T05:00:30.030Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-13T06:16:07.603Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-13T06:16:52.674Z",
+        "location": "home",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-13T09:18:54.261Z",
+        "location": "home",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-14T01:06:46.272Z",
+        "location": "home",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-14T01:07:05.092Z",
+        "location": "subway",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-14T07:19:50.185Z",
+        "location": "subway",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-14T07:20:01.491Z",
+        "location": "subway",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-14T08:16:31.764Z",
+        "location": "home",
+        "typeOfSurface": "laptop screen",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-15T02:34:31.997Z",
+        "location": "subway",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-15T02:35:36.331Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-15T02:35:47.213Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-15T09:47:33.717Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-15T23:02:20.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-16T00:04:54.000Z",
+        "location": "subway",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-16T04:35:57.000Z",
+        "location": "cafe",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-16T05:20:01.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-16T11:19:50.000Z",
+        "location": "home",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-16T11:47:34.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-16T23:45:27.000Z",
+        "location": "library",
+        "typeOfSurface": "laptop screen",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-17T07:41:01.296Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-17T07:51:47.183Z",
+        "location": "library",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-17T08:17:20.000Z",
+        "location": "cafe",
+        "typeOfSurface": "window",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-17T23:04:32.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-18T00:02:20.000Z",
+        "location": "subway",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-18T02:35:57.000Z",
+        "location": "cafe",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-18T08:20:01.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-18T09:42:13.000Z",
+        "location": "library ",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-18T10:47:34.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-18T23:43:25.000Z",
+        "location": "home",
+        "typeOfSurface": "laptop screen",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-19T00:51:01.000Z",
+        "location": "subway",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-19T01:32:04.000Z",
+        "location": "cafe",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-19T03:17:51.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-19T12:43:25.000Z",
+        "location": "library ",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-19T23:11:21.000Z",
+        "location": "home",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-20T00:19:23.000Z",
+        "location": "subway",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-20T03:27:57.000Z",
+        "location": "cafe",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-20T08:43:25.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-20T10:20:01.000Z",
+        "location": "library ",
+        "typeOfSurface": "window",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-20T23:02:51.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-21T01:17:32.000Z",
+        "location": "subway",
+        "typeOfSurface": "window",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-21T02:57:13.000Z",
+        "location": "restaurant",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-21T08:12:14.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-21T08:19:57.000Z",
+        "location": "restaurant",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-21T13:12:51.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-21T23:21:31.000Z",
+        "location": "home",
+        "typeOfSurface": "laptop screen",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-22T00:20:01.000Z",
+        "location": "subway",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-22T00:45:50.000Z",
+        "location": "restaurant",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-22T02:34:23.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-22T11:32:22.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-22T23:08:54.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-23T00:43:25.000Z",
+        "location": "subway",
+        "typeOfSurface": "window",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-23T04:21:50.000Z",
+        "location": "library ",
+        "typeOfSurface": "window",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-23T04:35:12.000Z",
+        "location": "library ",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-23T10:10:11.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-23T12:05:30.000Z",
+        "location": "home",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-23T23:32:22.000Z",
+        "location": "home",
+        "typeOfSurface": "mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-24T02:12:10.000Z",
+        "location": "subway",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-24T03:27:35.000Z",
+        "location": "cafe",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "yes"
+    },
+    {
+        "timestamp": "2019-09-24T05:11:01.000Z",
+        "location": "bathroom",
+        "typeOfSurface": "mirror",
+        "withCompany": "no"
+    },
+    {
+        "timestamp": "2019-09-24T12:02:10.000Z",
+        "location": "home",
+        "typeOfSurface": "phone mirror",
+        "withCompany": "no"
+    }
+]
