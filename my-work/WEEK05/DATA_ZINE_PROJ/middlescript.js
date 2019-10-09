@@ -10,38 +10,34 @@ let viz = d3.select("#container")
 
 
 function gotData(incomingData, i){
-  // console.log(incomingData);
+  console.log(incomingData);
 
 
 // link elements to data
 // creates empty place holders
-  let datagroups = viz.selectAll(".datagroup").data(incomingData).enter()
-    .append("g")
-    // same as .attr("class", "name")
-      .classed("datagroup", true)
-  ;
+  // let datagroups = viz.selectAll(".datagroup").data(incomingData).enter()
+  //   .append("g")
+  //   // same as .attr("class", "name")
+  //     .classed("datagroup", true)
+  // ;
 
   // filter data to only have entries with no company
-  function noCompFilter(d) {
+  function mirrorFilter(d) {
 
-    if(d.withCompany == 'no'){
+    if(d.typeOfSurface == 'mirror'){
       return true;
     }else {
       return false;
     }
 
   }
-  let noCompData = incomingData.filter(noCompFilter);
-  // console.log(filteredData);
+  let mirrorData = incomingData.filter(noCompFilter);
+  console.log(filteredData);
 
-  if (datagroups.withCompany == 'no'){
-    datagroups.append('circle')
-              .attr("cx", randomNumber)
-              .attr("cy", 200)
-              .attr("r", 20)
-              .attr("fill", getColor)
-  }
-
+  let mirrorDataGroup = viz.selectAll(".mirrorDataGroup").data(mirrorData).enter()
+    .append('g')
+      .classed('mirrorDataGroup', true)
+  ;
 
 
   // // timestamp (hour value) is being exported wrong from google sheet - json file
