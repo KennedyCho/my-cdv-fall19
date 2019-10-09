@@ -1,4 +1,4 @@
-let w = 2400;
+let w = 1200;
 let h = 800;
 
 
@@ -75,7 +75,7 @@ function gotData(incomingData, i){
   ;
 
   function getColor(d) {
-      
+
   }
 // link elements to data
 // creates empty place holders
