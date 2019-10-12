@@ -9,7 +9,7 @@ let viz = d3.select("#container")
     .style("background-color", "white")
 ;
 
-function gotData(incomingData, i){
+function gotData(incomingData){
   console.log(incomingData);
 
   // filter data
@@ -75,7 +75,7 @@ function gotData(incomingData, i){
   ;
 
   function getColor(d) {
-      
+
   }
 // link elements to data
 // creates empty place holders
