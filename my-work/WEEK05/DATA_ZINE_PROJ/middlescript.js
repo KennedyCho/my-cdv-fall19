@@ -12,95 +12,33 @@ let viz = d3.select("#container")
 function gotData(incomingData){
   console.log(incomingData);
 
-  // filter data
-  // company = yes medium = mirror
-  function mirrorFilter(d) {
+  // x-axis is hours within day
+  // y-axis is freq of use
+  // freq calc avg use
+  // line color denotes medium
+  var parseDate = d3.timeFormat('%H');
 
-    if(d.typeOfSurface == 'mirror'){
-      if(d.withCompany == 'yes'){
-        return true;
-      }
+  // let date = parseDate(new Date(incomingData[0].timestamp));
+  // console.log(parseInt(date.substring(11,13)));
+  let xPadding = 50;
 
-    }else {
-      return false;
-    }
-  }
-  let mirrorData = incomingData.filter(mirrorFilter);
+  let alternativeXDomain = d3.extent(incomingData, function(d){
+    console.log(parseDate(d.timestamp));
+    return parseDate(d.timestamp);
+  })
 
-  mirrorCircle = viz.append('circle')
-                    .attr('cx', 100)
-                    .attr('cy', 300)
-                    .attr('r', mirrorData.length)
+
+  console.log(parseDate);
+  let xScale = d3.scaleTime().domain(alternativeXDomain).range([xPadding, w-(xPadding*2)]);
+  var xAxis = d3.axisBottom(xScale)
+                  .tickFormat(customTimeFormat);
   ;
 
-  // filter data
-  // company = no medium = mirror
-  function mirrorNoFilter(d) {
+  let xAxisGroup = viz.append("g").attr("class", "xaxis");
+  xAxisGroup.call(xAxis);
 
-    if(d.typeOfSurface == 'mirror'){
-      if(d.withCompany == 'no'){
-        return true;
-      }
-
-    }else {
-      return false;
-    }
-  }
-  let mirrorNoData = incomingData.filter(mirrorNoFilter);
-
-  mirrorCircle = viz.append('circle')
-                    .attr('cx', 400)
-                    .attr('cy', 300)
-                    .attr('r', mirrorNoData.length)
-  ;
-  // filter data
-  // company = yes medium = phone
-  function phoneFilter(d) {
-
-    if(d.typeOfSurface == 'phone mirror'){
-      if(d.withCompany == 'yes'){
-        return true;
-      }
-
-    }else {
-      return false;
-    }
-  }
-  let phoneData = incomingData.filter(phoneFilter);
-
-  phoneCircle = viz.append('circle')
-                    .attr('cx', 600)
-                    .attr('cy', 300)
-                    .attr('r', phoneData.length)
-  ;
-
-  function getColor(d) {
-
-  }
-// link elements to data
-// creates empty place holders
-  // let datagroups = viz.selectAll(".datagroup").data(incomingData).enter()
-  //   .append("g")
-  //   // same as .attr("class", "name")
-  //     .classed("datagroup", true)
-  // ;
-
-  // let mirrorDataGroup = viz.selectAll(".mirrorDataGroup").data(mirrorData).enter()
-  //   .append('g')
-  //     .classed('mirrorDataGroup', true)
-  // ;
-
-  // // timestamp (hour value) is being exported wrong from google sheet - json file
-  // let timestampToHour = d3.timeFormat("%Y");
-  // // d3.timeFormat("%I %p");
-  //
-  // // test
-  // let test = timestampToHour(incomingData[5].location);
-  // console.log(test);
-  // console.log(typeof(test));
-
-
-
+  let xAxisYPos = h - 30;
+  xAxisGroup.attr("transform", "translate(0,"+xAxisYPos+")");
 }
 
 d3.json("data.json").then(gotData);
