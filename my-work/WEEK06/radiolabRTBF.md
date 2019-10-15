@@ -14,4 +14,4 @@ Supply links to the in a markdown file alongside 2-3 sentences eplaining what th
 Be prepared to explain what you enjoy about these articles and the way they use data / data visualization.
 finding your own sources is highly encouraged. Nevertheless, here are potential sources: nytimes, washingtonpost, fivethirtyeight, pudding.cool.
 
-(Crazy Rich Asians) [https://multimedia.scmp.com/lifestyle/article/2163738/crazy-rich-asians/index.html]
+[Crazy Rich Asians] (https://multimedia.scmp.com/lifestyle/article/2163738/crazy-rich-asians/index.html)
