@@ -1,4 +1,4 @@
-### Radiolab: Right to be Forgotten
+# Radiolab: Right to be Forgotten
 
 Listen to: Radiolab: Right to be Forgotten (WNYC, Apple Podcast, Spotify). It's a very nice podcast, enjoy it, and make your own thoughts about what's a fair or right use of data in the described situations.
 
@@ -8,6 +8,7 @@ The idea of forgiveness as mentioned within the podcast does bring about uncomfo
 
 Another avenue of thought that could be interesting to explore would be the idea of adding to the narrative. This acts in contrast to the current solution which is to delete or edit public record information. An alternative would be to have an option to provide more information in order to construct a more rounded profile of an individual. The materials that are asked to be taken down are all pieces that provide negative information. Adding follow-up articles, interviews or exposés may frame the individual in question a better light and give more background to the present circumstances. Additionally, this tactic acts as a form of obfuscation which could simply bury the information just as the podcast narrator mentions (in the example of storing information in an attic). 
 
+## Storytelling with Data
 Find two articles that tell a story with data and data visualization.
 Supply links to the in a markdown file alongside 2-3 sentences eplaining what they are about.
 Be prepared to explain what you enjoy about these articles and the way they use data / data visualization.
