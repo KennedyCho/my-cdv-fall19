@@ -16,4 +16,4 @@ finding your own sources is highly encouraged. Nevertheless, here are potential 
 
 [Crazy Rich Asians](https://multimedia.scmp.com/lifestyle/article/2163738/crazy-rich-asians/index.html)
 
-(http://www.studioterp.nl/mascaras-a-datavisualization/)
+[Correct Mascara] (http://www.studioterp.nl/mascaras-a-datavisualization/)
