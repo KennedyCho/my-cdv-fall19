@@ -8,5 +8,12 @@ Supply links to the in a markdown file alongside 2-3 sentences eplaining what th
 Be prepared to explain what you enjoy about these articles and the way they use data / data visualization.
 finding your own sources is highly encouraged. Nevertheless, here are potential sources: nytimes, washingtonpost, fivethirtyeight, pudding.cool.
 
+Due Wednesday (2019/10/23):
+
+Read the following (short) write-ups by Mike Bostock, note down any questions you have
+Thinking with Joins
+General Update Pattern, I
+General Update Pattern, II
+General Update Pattern, III
 
 
