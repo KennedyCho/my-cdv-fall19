@@ -78,6 +78,13 @@ function gotData(incomingData){
     drawViz();
   }, 4000);
 
+  // sets the interval where the function updates
+  // the function DrawViz() is update every ?
+  // setInterval(function () {
+  //   set = parseInt(Math.random()*20)
+  //   drawViz();
+  // }, 200)
+
   function drawViz() {
 
     console.log("drawViz runs");
@@ -155,6 +162,12 @@ function gotData(incomingData){
 //
 //
 }
+
+
+// The rest is for us to play.
+// Use a d3.interval to cycle through all the steps
+// or a Math.random() to jump randomly. Also, check what happens
+// if you update the scales and axis in the drawViz function, too.
 
 
 
