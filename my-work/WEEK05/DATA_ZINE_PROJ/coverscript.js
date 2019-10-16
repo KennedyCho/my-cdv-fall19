@@ -23,21 +23,23 @@ function getColor(datapoint) {
     return '#A9DEF9'
   }else if (datapoint.location == 'library') {
     return '#FDB70E'
+  }else {
+    return '#F9CD05'
   }
 
 }
 
 
-function getShape(d) {
-  // console.log(d);
-  if (d.withCompany == 'yes') {
-    shape = document.createElement("circle")
-    return shape
-  }else if (d.withCompany == 'no') {
-    shape = document.createElement("rect")
-    return shape
-  }
-}
+// function getShape(d) {
+//   // console.log(d);
+//   if (d.withCompany == 'yes') {
+//     shape = document.createElement("circle")
+//     return shape
+//   }else if (d.withCompany == 'no') {
+//     shape = document.createElement("rect")
+//     return shape
+//   }
+// }
 
 function getSVG(d) {
   if (d.typeOfSurface == 'mirror') {
@@ -50,48 +52,84 @@ function getSVG(d) {
     return svgLaptop;
   }
 }
+
+
+
 function gotData(incomingData){
   console.log(incomingData);
   // top group - holds all sub groups
   let gridGroup = viz.selectAll('.gridGroup').data(incomingData).enter()
                       .append('g')
                         .classed('gridGroup', true)
-                        .attr("transform", "translate(320, 320)")
+                        .attr("transform", "translate(100, 100)")
   ;
 
   let shapeGroups = gridGroup.append('g')
                                   .classed('shapeGroup', true)
-                                  .attr('width', 100 )
-                                  .attr('height', 100)
-                                  .attr("transform", "translate(320, 320)")
+
                                   // .attr("tranlate", "translate(80,0)")
-
-                                    .append(getShape)
   ;
+  var counter = 0;
+  function getX(d, i) {
+    if (counter < 10) {
+      counter = counter + 1;
+      return counter * 100;
+    }else {
+      counter = 0;
+      console.log(counter);
+      return counter * 100;
+    }
 
-  let circles = gridGroup.selectAll("circle")
+
+  }
+
+  function getY(d, i) {
+    if (counter < 6) {
+      counter = counter + 1;
+      return counter * 100;
+    }else {
+      counter = 0;
+      console.log(counter);
+      return counter * 100;
+    }
+  }
+
+  let circles = shapeGroups.append("circle")
                             .style("fill", getColor)
-                            .attr("cx", 200)
-                            .attr("cy", 200 )
-                            .attr("r", 300)
+                            .attr("cx", getX)
+                            .attr("cy", getY )
+                            .attr("r", 30)
 
   ;
 
-  let rectangles = gridGroup.selectAll("rect")
-                              .style("fill", getColor)
-                              .attr("x", 200)
-                              .attr("y", 200)
-                              .attr("width", 100)
-                              .attr("height", 100)
-
-;
+  // let rectangles = gridGroup.selectAll("rect")
+  //                             .style("fill", getColor)
+  //                             .attr("x", 200)
+  //                             .attr("y", 200)
+  //                             .attr("width", 100)
+  //                             .attr("height", 100)
+  //
+  // ;
 
   let accentGroups = gridGroup.append('g')
                               .classed('accentGroup', true)
-                                .append("path")
-                                  .html(getSVG)
-                                  .selectAll("path")
-                                    .attr("transform", "scale(0.1)")
+
+  ;
+
+
+  function getTranslate(d) {
+    let x = getX();
+    let y = getY();
+    let position = "translate(" + x + ', ' + y + ")";
+    return position
+    // "translate(getX, getY)"
+  }
+
+  accentGroups.html(getSVG);
+  accentGroups.selectAll("path").attr('transform', getTranslate)
+                                  .attr("transform", "scale(1)")
+
+
   ;
 
 
@@ -100,11 +138,10 @@ function gotData(incomingData){
 }
 
 d3.json("data.json").then(gotData);
-
-let svgPhone = '<g id="Layer_1"><path class="st0" d="M100,200"/><path class="st0" d="M85.5,198c25.1-24,24.1-65.3,0-87.2C61.4,89,21.8,93.3,2,122"/><path class="st0" d="M105,1"/><path class="st0" d="M113.5,2c-25.1,24-24.1,65.3,0,87.2C137.6,111,177.2,106.7,197,78"/></g><g id="Layer_2"></g>';
-let svgMirror = '<g id="Layer_3"><line class="st2" x1="35" y1="196" x2="190" y2="36"/><line class="st2" x1="6" y1="167" x2="161" y2="7"/></g>';
-let svgWindow = '<g id="Layer_4" class="st0"><polyline class="st1" points="111,13 111,95 10,95 	"/><polyline class="st1" points="91,187 91,105 187.5,105 	"/></g>';
-let svgLaptop = '<g id="Layer_5" class="st0"><polyline class="st1" points="50,4 100,84 150,4 	"/><polyline class="st1" points="150,196 101,117 50,196 	"/></g>';
+let svgPhone = '<path d="m 25 25 L 75 75 M 75 25 L 25 75" fill="none" stroke="#000000" stroke-width="1" />'
+let svgMirror = '<path d="m 50 10 l 0 30 M 45 10 l 0 30 M 55 10 l 0 30 M 50 60 l 0 30 M 45 60 l 0 30 M 55 60 l 0 30" fill="#ffff00" stroke="#000000" stroke-width="1" />';
+let svgWindow = '<path d="m 75 10 L 25 75 M 80 15 L 30 80 M 70 5 L 20 70 m 0 0 m 0 0 m 0 0 m 0 0" fill="#ffff00" stroke="#000000" stroke-width="1" />';
+let svgLaptop = '<path d="m 10 50 L 30 50 m 40 0 l 20 0 m -10 -10 l -60 0 m 0 20 l 60 0 m 0 0 m 0 0" fill="#ffff00" stroke="#000000" stroke-width="1" />';
 
 
 // function publicGridCellPositions() {
