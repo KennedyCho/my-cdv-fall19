@@ -61,7 +61,7 @@ function gotData(incomingData){
   let gridGroup = viz.selectAll('.gridGroup').data(incomingData).enter()
                       .append('g')
                         .classed('gridGroup', true)
-                        .attr("transform", "translate(100, 100)")
+                        .attr("transform", "translate(200, 50)")
   ;
 
   let shapeGroups = gridGroup.append('g')
@@ -70,35 +70,39 @@ function gotData(incomingData){
                                   // .attr("tranlate", "translate(80,0)")
   ;
   var counter = 0;
+
   function getX(d, i) {
-    if (counter < 10) {
+    if (i%9 == 0) {
+      counter = 0;
+      return counter;
+    }else {
       counter = counter + 1;
       return counter * 100;
-    }else {
-      counter = 0;
-      console.log(counter);
-      return counter * 100;
+      // console.log(counter);
     }
-
-
   }
 
+  var counter2 = 0;
   function getY(d, i) {
-    if (counter < 6) {
-      counter = counter + 1;
-      return counter * 100;
+
+    if (i==0) {
+      return counter2;
+    }
+    else if (i%9 == 0) {
+      counter2 = counter2 + 1;
+      // console.log(counter2);
+      return counter2 * 100;
     }else {
-      counter = 0;
-      console.log(counter);
-      return counter * 100;
+      return counter2 * 100;
     }
   }
 
-  let circles = shapeGroups.append("circle")
-                            .style("fill", getColor)
-                            .attr("cx", getX)
-                            .attr("cy", getY )
-                            .attr("r", 30)
+  shapeGroups.append("circle")
+              .style("fill", getColor)
+              .attr("cx", getX)
+              .attr("cy", getY )
+              .attr("r", 30)
+
 
   ;
 
@@ -117,22 +121,52 @@ function gotData(incomingData){
   ;
 
 
-  function getTranslate(d) {
-    let x = getX();
-    let y = getY();
-    let position = "translate(" + x + ', ' + y + ")";
-    return position
+  var a = 0;
+
+  function accentX(i) {
+    if (i%9 == 0) {
+      a = 0;
+      return a;
+    }else {
+      a = a + 1;
+      return a * 100;
+      // console.log(counter);
+    }
+  }
+
+  var b = 0;
+  function accentY(i) {
+
+    if (i==0) {
+      return b;
+    }
+    else if (i%9 == 0) {
+      b = b + 1;
+      // console.log(counter2);
+      return b * 100;
+    }else {
+      return b * 100;
+    }
+  }
+  xscale = d3.scaleLinear().domain([0,9]).range([10, w]);
+  yScale = d3.scaleLinear().domain([0,9]).range([200, h]);
+
+  function getTranslate(d, i) {
+    console.log(i);
+    let x = xscale(i);
+    console.log('this is x',x);
+    let y = yScale(i);
+    console.log('this is y',y);
+    // let position = "translate(" + x + ', ' + y + ")";
+    // return position
     // "translate(getX, getY)"
   }
 
   accentGroups.html(getSVG);
-  accentGroups.selectAll("path").attr('transform', getTranslate)
-                                  .attr("transform", "scale(1)")
-
-
+  accentGroups.selectAll("path")
+              .attr('transform', 'scale(1)')
   ;
-
-
+  accentGroups.attr('transform', getTranslate);
 
 
 }
