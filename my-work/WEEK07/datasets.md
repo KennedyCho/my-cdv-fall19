@@ -12,6 +12,8 @@
 
 ### [Dating.](https://data.stanford.edu/hcmst)
 
+### [Data is Beautiful](https://www.reddit.com/r/dataisbeautiful/)
+
 ## Additional Resources 
 https://github.com/MuseumofModernArt/collection
 https://github.com/tategallery/collection
