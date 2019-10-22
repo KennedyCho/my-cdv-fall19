@@ -1,29 +1,15 @@
-
-### [Student Debt](https://www.reddit.com/r/datasets/comments/dkurvp/student_debt_dataset/)
+### [Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu)
+I am very interested in astronomy and space exploration. Using this dataset, I would be interested in showcasing a comparison between exoplanets discovered and earth. Additionally, I would like to see how the discovery of exoplanets have progressed over time. 
 
 ### [Porn.](http://sexualitics.org/)
 [GitHub](http://sexualitics.github.io/)
+Using this dataset, I would like to explore the evolution of sex trends. I would like to see if there is evidence correlating sex trends and real life consequences. 
 
-### [MoMa](https://github.com/MuseumofModernArt/collection)
-
-### [Albuquerque’s impressive open-data program.](http://www.cabq.gov/abq-data)
-
-### [Every obscenity and death in Quentin Tarantino's movies.](https://github.com/fivethirtyeight/data/tree/master/tarantino)
-
-### [Dating.](https://data.stanford.edu/hcmst)
-
-### [Data is Beautiful](https://www.reddit.com/r/dataisbeautiful/)
+### [Movies](https://gist.github.com/tiangechen/b68782efa49a16edaf07dc2cdaa855ea)
+My favorite past time is to watch movies. Using this dataset, I would like to see the movie trends over time. Looking at genres and major studios I could showcase the general popularity. 
 
 ## Additional Resources 
-https://github.com/MuseumofModernArt/collection
-https://github.com/tategallery/collection
-https://github.com/cooperhewitt/collection
-http://www.penn.museum/collections/data.php
-https://www.rijksmuseum.nl/en/api
-https://www.brooklynmuseum.org/opencollection/api/
-https://medium.com/@blprnt/a-sort-of-joy-1d9d5ff02ac9
-https://www.imls.gov/research-evaluation/data-collection/museum-universe-data-file
-
-https://data.stanford.edu/hcmst2017
-
-### [name](link)
+[Data is Beautiful](https://www.reddit.com/r/dataisbeautiful/) - reddit thread that lists data visualization projects
+[Every obscenity and death in Quentin Tarantino's movies.](https://github.com/fivethirtyeight/data/tree/master/tarantino)
+[NYC MTA](https://www.datazar.com/file/f552d131a-90bd-42f9-a31b-7d329bd74c04)
+[STDs Nationally](https://www.datazar.com/file/f4ccc75c3-21ce-4101-94fa-5e539071b4f2)
