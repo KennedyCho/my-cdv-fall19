@@ -370,7 +370,7 @@ function removeAndAdd(){
   console.log(newData);
   // update xscale
   xScale.domain(newData);
-
+  
   // update xAxis
 
   xAxis = d3.axisBottom(xScale);
