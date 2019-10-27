@@ -1,11 +1,11 @@
 // just some console.logging at the start to make
 // sure the script runs and we have data (from dataManager.js)
-console.log("\n\n\nWelcome!\n\n\n");
-console.log("script runs.");
-console.log("do we have data?");
+// console.log("\n\n\nWelcome!\n\n\n");
+// console.log("script runs.");
+// console.log("do we have data?");
 // check if variable exists: https://stackoverflow.com/a/519157
 console.log("data:", typeof data!=='undefined'?data:"nothing here");
-console.log(typeof data!=='undefined'?"seems like it ;-) it comes from the dataManager.js script.":"...damnit! let's see what is going wrong in the dataManager.js script.");
+// console.log(typeof data!=='undefined'?"seems like it ;-) it comes from the dataManager.js script.":"...damnit! let's see what is going wrong in the dataManager.js script.");
 
 // global variables that we need at various spots:
 let w = 800;
@@ -34,7 +34,7 @@ let viz = d3.select("#container")
 // first we need an array with the keys only:
 let allNames = data.map(function(d){return d.key});
 // check it:
-console.log(allNames);
+// console.log(allNames);
 // now we as d3 to give us our custom scale
 // we say "hey d3, here is a list of names (keys (the domain)), I want a function that
 // returns a number (pixel location on the x axis (the range)) for each of the names.
@@ -98,7 +98,7 @@ let theSituation = graphGroup.selectAll(".datapoint").data(data);
 // as we have learned, D3 did some kind of calculation here, some weighing
 // of what is on the page already and what needs to go there.
 // have a close look at this console.log:
-console.log("the full situation:", theSituation);
+// console.log("the full situation:", theSituation);
 // note the reference to enter, exit and group in the object
 // those three are the "full situation" / everything that's on the table.
 // they comprises elemnents that are about to enter (in this case 10),
@@ -117,8 +117,8 @@ console.log("the full situation:", theSituation);
 let enteringElements = theSituation.enter();
 let exitingElements = theSituation.exit();
 // and again, look closely:
-console.log("enteringElements", enteringElements);
-console.log("exitingElements", exitingElements);
+// console.log("enteringElements", enteringElements);
+// console.log("exitingElements", exitingElements);
 // note how we now only deal with a "_groups" thing,
 // in the enteringElements object, the "_groups" array holds the
 // empty placeholder elements for the elements that are about to enter
@@ -194,7 +194,7 @@ function add(){
   xAxisGroup.transition().call(xAxis).selectAll("text").attr("font-size", 18); // we adjust this to bring the new axis onto the page
   // get rid of the little tick lines
   xAxisGroup.selectAll("line").remove();
-  
+
   // y scale...
   yMax = d3.max(data, function(d){return d.value});
   yDomain = [0, yMax+yMax*0.1];
@@ -308,11 +308,90 @@ document.getElementById("buttonA").addEventListener("click", add);
 
 function remove(){
   removeDatapoints(1);
+
+  // shows data array with one entry removed
+  // console.log('new data', data);
+  allNames = data.map(function(d){return d.key});
+  // and adjust the domain of xScale:
+  // console.log('allNames',allNames);
+  xScale.domain(allNames);
+  // done, the xScale is "fixed" and ready to help us to position elements
+  // for our new data
+
+  xAxis = d3.axisBottom(xScale); //we adjust this because it uses the new xScale
+  xAxis.tickFormat(d=>{return data.filter(dd=>dd.key==d)[0].name;}); // we adjust this because it uses the new data
+  xAxisGroup.transition().call(xAxis).selectAll("text").attr("font-size", 18); // we adjust this to bring the new axis onto the page
+  // get rid of the little tick lines
+  xAxisGroup.selectAll("line").remove();
+
+  // y scale...
+  yMax = d3.max(data, function(d){return d.value});
+  yDomain = [0, yMax+yMax*0.1];
+  yScale.domain(yDomain);
+
+  // bind new data array to elements classed .datapoint
+  let newBind = graphGroup.selectAll(".datapoint").data(data);
+
+  console.log('new',newBind);
+
+  let exitingElements = newBind.exit();
+  console.log(exitingElements);
+  exitingElements.remove();
+
+  // let dataGroups = enteringElements.append("g").classed("datapoint", true);
+  newBind.transition().duration(1000).attr("transform", function (d, i) {
+    return "translate("+ xScale(d.key)+ "," + (h-padding) + ")"
+  });
+
+  newBind.select("rect")
+    .transition()
+    .delay(1000)
+    .duration(200)
+    .attr("width", function(){
+       return xScale.bandwidth();
+    })
+    .attr("y", function(d,i){
+      return -yScale(d.value);
+    })
+    .attr("height", function(d, i){
+      return yScale(d.value);
+    })
+  ;
+
+
 }
 document.getElementById("buttonB").addEventListener("click", remove);
 
 function removeAndAdd(){
   removeAndAddDatapoints(1,1);
+
+  // update domain with new data
+  newData = data.map(function (d) {return d.key});
+  console.log(newData);
+  // update xscale
+  xScale.domain(newData);
+
+  // update xAxis
+
+  xAxis = d3.axisBottom(xScale);
+  xAxis.tickFormat(d=>{return data.filter(dd=>dd.key==d)[0].name;});
+  xAxisGroup.transition().call(xAxis).selectAll("text").attr("font-size", 18);
+  xAxisGroup.selectAll("line").remove();
+
+  // update y scale
+  yMax = d3.max(data, function (d) {return d.value});
+  yDomain = [0, yMax+yMax*0.1];
+  yScale.domain(yDomain);
+
+  // bind updated data array
+  newDataBind = graphGroup.selectAll(".datapoint").data(data);
+
+  // remove rect binded to exiting data points
+  exitingElements = newDataBind.exit().remove();
+
+
+
+
 }
 document.getElementById("buttonC").addEventListener("click", removeAndAdd);
 

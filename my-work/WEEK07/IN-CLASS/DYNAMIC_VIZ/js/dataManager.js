@@ -72,7 +72,7 @@ function newDatapoint(){
   return {key: randKey, name:testRandomEmoji, value: randomValue}
 }
 let testNewDatapoint = newDatapoint();
-console.log("testing new datapoint:", testNewDatapoint);
+// console.log("testing new datapoint:", testNewDatapoint);
 
 
 //  _       _ _   _       _       _       _
@@ -90,7 +90,7 @@ function initializeData(){
   }
 }
 initializeData();
-console.log("initial data:", data);
+// console.log("initial data:", data);
 
 
 //            _     _       _       _                    _       _
