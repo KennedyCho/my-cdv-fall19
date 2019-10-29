@@ -370,7 +370,7 @@ function removeAndAdd(){
   console.log(newData);
   // update xscale
   xScale.domain(newData);
-  
+
   // update xAxis
 
   xAxis = d3.axisBottom(xScale);
@@ -397,6 +397,35 @@ document.getElementById("buttonC").addEventListener("click", removeAndAdd);
 
 function sortData(){
   sortDatapoints();
+
+  theSituation = graphGroup.selectAll(".datapoint").data(data);
+  // note, we don't need "let" because the variable already exists
+  console.log("the NEW full situation:", theSituation);
+  
+  theSituation.transition().duration(1000).attr("transform", function (d, i) {
+    return "translate("+ xScale(d.key)+ "," + (h-padding) + ")"
+  });
+
+  theSituation.select("rect")
+    .transition()
+    .delay(1000)
+    .duration(200)
+    .attr("width", function(){
+       return xScale.bandwidth();
+    })
+    .attr("y", function(d,i){
+      return -yScale(d.value);
+    })
+    .attr("height", function(d, i){
+      return yScale(d.value);
+    })
+  ;
+
+  // xAxis.tickFormat(d=>{return data.filter(dd=>dd.key==d)[0].name;}); // we adjust this because it uses the new data
+  // xAxisGroup.transition().call(xAxis).selectAll("text").attr("font-size", 18); // we adjust this to bring the new axis onto the page
+
+
+
 }
 document.getElementById("buttonD").addEventListener("click", sortData);
 
