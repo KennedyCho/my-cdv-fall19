@@ -49,12 +49,41 @@ function gotData(incomingData){
   yAxisGroup.call(yAxis);
 
 
+// NEW CODE BY KENNEDY
 
+
+
+  let lineMaker = d3.line()
+        // x axis : Year
+        .x(function (d) {
+          return xScale(d.year)
+        })
+        // y axis : # of births
+        .y(function (d) {
+          return yScale(d.birthsPerThousand)
+        })
+  ;
+
+  let theSituation = viz.datum(data);
+
+  theSituation.append("path")
+      .attr("d", lineMaker)
+      .attr("fill", "none")
+      .attr("stroke", "pink")
+      .attr("stroke-width", 20)
+  ;
 
 
 
 
 }
+
+// STEP 3
+function changeData(){
+  
+}
+document.getElementById("buttonA").addEventListener("click", changeData);
+
 
 // function that turns all datapoints year values
 // into JS date objects in the very beginning
