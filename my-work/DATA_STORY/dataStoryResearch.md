@@ -1,5 +1,7 @@
 ## Datasets
-# Dataset 1
+# listings.csv
+
+Dataset detailing every current AirBnb listing located in the state of Hawaii.
 
 id
 listing_url
@@ -109,10 +111,22 @@ calculated_host_listings_count_shared_roomsreviews_per_month
 
 # neighbourhood.csv
 
+Set with every neighborhood used in the listings.csv
+
 neighbourhood_group = island
 neighbourhood = district
 
-# Dataset 1
+# House Price Index (Hawaii)
+
+Measures changes in single-family home prices across a Hawaii Housing market
+1975-2019
+
+DATE = date of rate
+HISTHPI = rate
+
+# Building Permits Issued
+
+
 
 What are you trying to show?
 What is the relevance of your dataset?
