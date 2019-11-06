@@ -11,10 +11,12 @@ let viz = d3.select("#container").append("svg")
 
 
 // IMPORT DATA
-d3.json("DATA/neighbourhoods.geojson").then(function(incomingData){
+d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
+
+  // let geoData = "DATA/neighbourhoods.geojson";
 
   // PRINT DATA
-  console.log(incomingData);
+  // console.log(incomingData);
 
   // SCALES (to translate data values to pixel values)
   // let xDomain = d3.extent(incomingData, function(d){ return Number(d.year); })
@@ -22,6 +24,8 @@ d3.json("DATA/neighbourhoods.geojson").then(function(incomingData){
   // let yDomain = d3.extent(incomingData, function(d){ return Number(d.birthsPerThousand); })
   // let yScale = d3.scaleLinear().domain(yDomain).range([h-padding,padding]);
 
+  // GEO PROJECTION
+  let projection = d3.geoEquirectangular();
 
   // PATH (line) MAKER - gets points, returns one of those complicated looking path strings
   // let lineMaker = d3.line()
@@ -33,6 +37,9 @@ d3.json("DATA/neighbourhoods.geojson").then(function(incomingData){
   //     })
   // ;
 
+  // PATH MAKER
+  let pathMaker = d3.geoPath(projection);
+
   // CREATE SHAPES ON THE PAGE!
   // viz.datum(incomingData)
   //   .append("path")
@@ -43,7 +50,14 @@ d3.json("DATA/neighbourhoods.geojson").then(function(incomingData){
   //     .attr("stroke-width", 8)
   // ;
 
+  // create shapes on the page
+  // datum is for one line
+  // data for multiple lines
 
+  viz.selectAll("path").data(geoData.features).enter()
+    .append("path")
+      .attr("d", pathMaker)
+  ;
 
 
 })
