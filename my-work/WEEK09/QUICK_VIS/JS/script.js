@@ -91,7 +91,7 @@ function gotData(data) {
 
       var y = parseFloat(d.HISTHPI);
       console.log(y);
-      return y
+      return h-y
     }
 
     let lineMaker = d3.line()
