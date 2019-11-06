@@ -6,17 +6,14 @@ let padding = 90
 let viz = d3.select("#container").append("svg")
     .style("width", w)
     .style("height", h)
-    .style("background-color", "lavender")
+    .style("background-color", "#BDF5F6")
 ;
 
 
 // IMPORT DATA
 d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
 
-  // let geoData = "DATA/neighbourhoods.geojson";
-
   // PRINT DATA
-  // console.log(incomingData);
 
   // SCALES (to translate data values to pixel values)
   // let xDomain = d3.extent(incomingData, function(d){ return Number(d.year); })
@@ -25,7 +22,11 @@ d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
   // let yScale = d3.scaleLinear().domain(yDomain).range([h-padding,padding]);
 
   // GEO PROJECTION
-  let projection = d3.geoEquirectangular();
+  let projection = d3.geoEquirectangular()
+      .center([20.991, -156.988])
+      .translate([w/2, h/2])
+      .fitExtent([[50, 50], [w-50, h-50]], geoData)
+  ;
 
   // PATH (line) MAKER - gets points, returns one of those complicated looking path strings
   // let lineMaker = d3.line()
@@ -57,6 +58,7 @@ d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
   viz.selectAll("path").data(geoData.features).enter()
     .append("path")
       .attr("d", pathMaker)
+      .attr("fill", "#6BA41C")
   ;
 
 
