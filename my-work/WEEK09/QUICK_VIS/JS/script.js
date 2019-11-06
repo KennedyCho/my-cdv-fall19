@@ -84,13 +84,13 @@ function gotData(data) {
       var parseTime = d3.timeParse("%Y-%m-%d");
       // console.log(parseTime(datapoint.DATE));
       // parseTime(d.DATE)
-      console.log(xScale(parseTime(d.DATE)));
+      // console.log(xScale(parseTime(d.DATE)));
       return xScale(parseTime(d.DATE))
     }
     function getY(d) {
 
       var y = parseFloat(d.HISTHPI);
-      console.log(y);
+      // console.log(y);
       return h-y
     }
 
@@ -103,11 +103,15 @@ function gotData(data) {
     theSituation.append("path")
         .attr("d", lineMaker)
         .attr("fill", "none")
-        .attr("stroke", "seagreen")
+        .attr("stroke", "black")
     ;
 
 
   }
+
+  setTimeout(function () {
+    console.log('look');
+  }, 4000);
 
 }
 
