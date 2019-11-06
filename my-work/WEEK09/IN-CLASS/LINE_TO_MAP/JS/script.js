@@ -11,7 +11,7 @@ let viz = d3.select("#container").append("svg")
 
 
 // IMPORT DATA
-d3.json("births-china.json").then(function(incomingData){
+d3.json("DATA/births-china.json").then(function(incomingData){
 
   // PRINT DATA
   console.log(incomingData);
