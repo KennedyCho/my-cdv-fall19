@@ -60,11 +60,38 @@ d3.json("monarchs.json").then(function(incomingData){
   datagroups.append("circle")
     .attr("r", 10)
     .attr("opacity", 0.5)
+    .attr("class", "datacircle")
   ;
 
 
+  // datagroups.filter(function (d) {
+  //   return d.type == "diplomacy";
+  //
+  // }).select("circle").attr("class", "diplomacyCircle")
 
 
+  datagroups
+  .on("mouseover", function () {
+    console.log("hovering");
+    let element = d3.select(this);
+    element.select("circle").transition().attr("r", 30);
+
+  })
+  .on("mouseout", function () {
+    let element = d3.select(this);
+    element.select("circle").transition().attr("r", 10);
+
+  })
+
+
+  // let infotext = viz.append("text")
+  //   // .text("blablablbalablablabla")
+  //   .attr("x", w/2)
+  //   .attr("y", padding/2)
+  //   .attr("text-anchor", "middle")
+  //   .attr("font-family", "sans-serif")
+  //   .attr("fill", "#ff5333")
+  // ;
 
 
 
