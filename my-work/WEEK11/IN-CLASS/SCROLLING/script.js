@@ -23,7 +23,14 @@ adjustVizHeight();
 
 
 // your script starts here, e.g. load data here.
+let dataFile = "DATA/HISTHPI.csv"
 
+d3.csv(dataFile).then(function (incomingData) {
+  console.log(incomingData);
+
+
+
+})
 
 
 // scrolling event listener

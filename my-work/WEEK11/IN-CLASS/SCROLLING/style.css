@@ -9,8 +9,8 @@ body{
 }
 #visualization {
   position: sticky;
-  /* top: 10vh; */
-  /* height: 80vh; */
+  /* top: 10vh;
+  height: 80vh; */
   width: 50%;
   /* background-color: lightgrey; */
 }
