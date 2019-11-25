@@ -4,6 +4,7 @@ export default function currentBox(cb){
   let scrollTop = event.target.scrollTop;
   let targetRec = event.target.getBoundingClientRect();
   let firstBoxRec = boxes[0].getBoundingClientRect();
+  // find the mid point of the page 
   let midpoint = scrollTop + targetRec.height/2;
 
   let closestBox = boxes.reduce(function(closest, box){
