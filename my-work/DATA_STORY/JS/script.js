@@ -28,7 +28,7 @@ d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
   // datum is for one line
   // data for multiple lines
 
-  viz.selectAll("path").data(geoData.features).enter()
+  let map = viz.selectAll("path").data(geoData.features).enter()
     .append("path")
       .attr("d", pathMaker)
       .attr("fill", "#6BA41C")
@@ -36,12 +36,27 @@ d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
 
   let pinMaker = d3.geoCircle()
     .center([21.492, -157.966])
-    .radius(5);
+    // .radius(5);
 
-  var circle = d3.geoCircle().center([21.492, -157.966]).radius(5)
-  viz.beginPath();
-  viz.strokeStyle = 'red';
-  geoGenerator(circle());
-  viz.stroke();
+  d3.csv("DATA/listings.csv").then(function(listingsData) {
+    // console.log(listingsData);
+    // listingsData.latitude
+    // listingsData.longitude
+
+    map.selectAll(".listingPin").data(listingsData).enter().append("circle")
+      .classed("listingPin", true)
+      .attr('transform', function (datapoint) {
+        return "translate(" + projection([datapoint.latitude+1000, datapoint.longitude+2000]) + ")";
+        // return "translate(" + datapoint.latitude+","+ datapoint.longitude + ")";
+      })
+      // .attr('cy', 100)
+      .attr('r', 2)
+      .attr("fill", "red")
+    ;
+
+
+  })
+
+
 
 })
