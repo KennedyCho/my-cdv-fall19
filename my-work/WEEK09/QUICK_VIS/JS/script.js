@@ -19,8 +19,6 @@ function gotData(data) {
     var parseTime = d3.timeParse("%Y-%m-%d");
     // console.log(parseTime(datapoint.DATE));
     return parseTime(datapoint.DATE)
-
-
   });
 
 
