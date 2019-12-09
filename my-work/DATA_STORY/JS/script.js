@@ -14,7 +14,7 @@ let viz = d3.select("#mapContainer").append("svg")
 
 
 // IMPORT DATA
-d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
+d3.json("DATA/EUROPE.geojson").then(function(geoData){
 
   viz.append("rect")
     .attr("class", "background")
@@ -53,6 +53,12 @@ d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
       .on("click", clicked)
   ;
 
+  let vizTest = d3.select("#testContainer").append("svg")
+      .style("width", 500)
+      .style("height", 500)
+      .style("background-color", "white")
+  ;
+
   function clicked(d) {
   if (active.node() === this) return reset();
   active.classed("active", false);
@@ -70,6 +76,13 @@ d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
       .duration(750)
       // .call(zoom.translate(translate).scale(scale).event); // not in d3 v4
       .call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) ); // updated for d3 v4
+
+  d3.csv("DATA/Sale_Prices_City.csv").then(function (medianPriceData) {
+      // let cityName = vizTest.append("text").text("Hello").attr("font-size", "20px").attr("fill", "red");
+
+
+
+  })
 }
 
 function reset() {
@@ -91,7 +104,6 @@ function reset() {
 
 })
 
-
 // housing index data
 let vizHousingIndex = d3.select("#comparisonContainer").append("svg")
     .style("width", wMap)
@@ -99,6 +111,7 @@ let vizHousingIndex = d3.select("#comparisonContainer").append("svg")
     .style("background-color", "white")
 ;
 
+// Housing Index Graph
 d3.csv("DATA/HISTHPI.csv").then(function (housingIndexData) {
   // console.log(housingIndexData);
 
@@ -139,7 +152,7 @@ d3.csv("DATA/HISTHPI.csv").then(function (housingIndexData) {
 
   let vizgroup = vizHousingIndex.append("g").attr("class", "vizgroup");
 
-  createViz();
+  // createViz();
 
 
   function createViz() {
