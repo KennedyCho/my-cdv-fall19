@@ -39,9 +39,10 @@
 
 }
 
-#comparisonContainer{
-
-
+#graphContainer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 #footer{
@@ -68,4 +69,77 @@
 #infoSVG:hover{
   fill: red;
   opacity: 1;
+}
+
+#locationName{
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  color: black;
+  font-size: 45px;
+
+}
+
+#buttons{
+  display: flex;
+  width:100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.button{
+  height:50px;
+  flex-grow: 1;
+  text-align: center;
+  cursor: pointer;
+  margin: 25px;
+}
+.button p{
+  font-family: 'Staatliches';
+  pointer-events: none;
+  /* font-size: 10px; */
+  color: white;
+  /* font-weight: bold; */
+}
+
+#buttonA{
+  background-color: #66B032;
+  box-shadow: 0 0 10px 10px #66B032;
+}
+#buttonB{
+  background-color: #347B98;
+  box-shadow: 0 0 10px 10px #347B98;
+}
+#buttonC{
+  background-color: #092834;
+  box-shadow: 0 0 10px 10px #092834;
+}
+#buttonD{
+  background-color: #F2E0D5;
+  box-shadow: 0 0 10px 10px #F2E0D5;
+}
+#buttonE{
+  background-color: #F24C27;
+  box-shadow: 0 0 10px 10px #F24C27;
+}
+#buttonF{
+  background-color: black;
+  box-shadow: 0 0 10px 10px black;
+}
+
+.info{
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  /* font-family: 'Quicksand', sans-serif; */
+  /* font-family: 'Bebas Neue', sans-serif; */
+  /* font-family: 'Staatliches', cursive; */
+  /* font-family: 'Chonburi', cursive; */
+  font-family: 'Pavanam', sans-serif;
+  /* font-family: 'Elsie', cursive; */
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* margin-bottom: 5%; */
+
+
 }

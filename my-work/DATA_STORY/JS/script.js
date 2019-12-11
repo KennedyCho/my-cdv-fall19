@@ -3,6 +3,8 @@ let wMap = 1200*weight;
 let hMap = 800*weight;
 let padding = 90
 
+let pinSVG = '<path d="M10,1.375c-3.17,0-5.75,2.548-5.75,5.682c0,6.685,5.259,11.276,5.483,11.469c0.152,0.132,0.382,0.132,0.534,0c0.224-0.193,5.481-4.784,5.483-11.469C15.75,3.923,13.171,1.375,10,1.375 M10,17.653c-1.064-1.024-4.929-5.127-4.929-10.596c0-2.68,2.212-4.861,4.929-4.861s4.929,2.181,4.929,4.861C14.927,12.518,11.063,16.627,10,17.653 M10,3.839c-1.815,0-3.286,1.47-3.286,3.286s1.47,3.286,3.286,3.286s3.286-1.47,3.286-3.286S11.815,3.839,10,3.839 M10,9.589c-1.359,0-2.464-1.105-2.464-2.464S8.641,4.661,10,4.661s2.464,1.105,2.464,2.464S11.359,9.589,10,9.589"></path>'
+
 var active = d3.select(null);
 
 // SVG MAP
@@ -13,8 +15,10 @@ let viz = d3.select("#mapContainer").append("svg")
 ;
 
 
+
+
 // IMPORT DATA
-d3.json("DATA/EUROPE.geojson").then(function(geoData){
+d3.json("DATA/neighbourhoods.geojson").then(function(geoData){
 
   viz.append("rect")
     .attr("class", "background")
@@ -30,6 +34,39 @@ d3.json("DATA/EUROPE.geojson").then(function(geoData){
       .fitExtent([[30, 30], [wMap-30, hMap-30]], geoData)
   ;
 
+  d3.csv("DATA/listingLocation.csv").then(function (listingData) {
+    // console.log(listingData);
+
+    // d3.select("#mapContainer").selectAll(".pin").data(listingData)
+    //   .enter()
+    //   .append("svg")
+    //   .html(pinSVG)
+    //   .attr("transform", "scale(1)")
+    //   .attr("transform", function (d) {
+    //     return "translate(" + projection([d.longitude,d.latitude]) + ")";
+    //   })
+    // ;
+
+    let projectionPin = d3.geoEquirectangular()
+      .center([20.991, -156.988])
+      .translate([wMap/2, hMap/2])
+
+    ;
+
+    viz.selectAll(".pin")
+  						  .data(listingData)
+  						  .enter().append("circle", ".pin")
+  						  .attr("r", 1)
+                .attr("fill", "red")
+  						  .attr("transform", function(d) {
+  							return "translate(" + projectionPin([
+  							  d.longitude,
+  							  d.latitude
+  							]) + ")";
+  						  })
+
+  })
+
   // PATH MAKER
   let pathMaker = d3.geoPath(projection);
   let zoom = d3.zoom().on("zoom", zoomed);
@@ -39,7 +76,7 @@ d3.json("DATA/EUROPE.geojson").then(function(geoData){
   // datum is for one line
   // data for multiple lines
 
-
+  let locationName = d3.select("#locationTitle");
 
   let map = viz.selectAll("path").data(geoData.features).enter()
     .append("path")
@@ -48,15 +85,9 @@ d3.json("DATA/EUROPE.geojson").then(function(geoData){
       .attr("stroke", "black")
       .attr("stroke-opacity", 0.5)
       .attr("opacity", 0.7)
-      .on("mouseover", function(){d3.select(this).style("fill", "red").style("opacity", 1);})
+      .on("mouseover", function(){d3.select(this).style("fill", "#F0F7D4").style("opacity", 1);})
       .on("mouseout", function(){d3.select(this).style("fill", "#6BA41C").style("opacity", 0.7);})
       .on("click", clicked)
-  ;
-
-  let vizTest = d3.select("#testContainer").append("svg")
-      .style("width", 500)
-      .style("height", 500)
-      .style("background-color", "white")
   ;
 
   function clicked(d) {
@@ -77,13 +108,21 @@ d3.json("DATA/EUROPE.geojson").then(function(geoData){
       // .call(zoom.translate(translate).scale(scale).event); // not in d3 v4
       .call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) ); // updated for d3 v4
 
-  d3.csv("DATA/Sale_Prices_City.csv").then(function (medianPriceData) {
-      // let cityName = vizTest.append("text").text("Hello").attr("font-size", "20px").attr("fill", "red");
+  locationName.text(d.properties.neighbourhood);
 
+  // let clickedLocationName = locationName.append("text")
+  //   // .attr("font-size", "100px")
+  //   .attr("font-family", "helvetica")
+  //   .attr("fill", "black")
+  //   .text("hello")
+  // ;
 
-
-  })
 }
+
+// viz.append("text").text(d.properties.neighbourhood)
+//   .attr("fill", "black")
+//   .attr("font-size", "20")
+//   .attr("font-family", "sans-serif");
 
 function reset() {
   active.classed("active", false);
@@ -93,6 +132,7 @@ function reset() {
       .duration(750)
       // .call( zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1) ); // not in d3 v4
       .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
+  locationName.text("THE STATE OF HAWAII");
 }
 
   function zoomed() {
@@ -104,59 +144,246 @@ function reset() {
 
 })
 
-// housing index data
-let vizHousingIndex = d3.select("#comparisonContainer").append("svg")
-    .style("width", wMap)
-    .style("height", hMap)
-    .style("background-color", "white")
-;
-
-// Housing Index Graph
-d3.csv("DATA/HISTHPI.csv").then(function (housingIndexData) {
-  // console.log(housingIndexData);
-
-  let xDomain = d3.extent(housingIndexData, function(datapoint){
-    var parseTime = d3.timeParse("%Y-%m-%d");
-    // console.log(parseTime(datapoint.DATE));
-    return parseTime(datapoint.DATE)
-  });
 
 
-  let yDomain = d3.extent(housingIndexData, function(datapoint){
-    var y = parseFloat(datapoint.HISTHPI);
-    return y
-
-  });
-  console.log(xDomain);
-  console.log(yDomain);
 
 
-  var xPadding = 50;
+// population Graph
+function population() {
+  let vizGraph = d3.select("#popGraph").append("svg")
+      .style("width", wMap)
+      .style("height", hMap)
+      .style("background-color", "white")
+      .attr("class", "graphContainerSVG")
+  ;
 
-  let xScale = d3.scaleTime().domain(xDomain).range([xPadding,wMap - xPadding]);
-  // create axis for this scale
-  let xAxis = d3.axisBottom(xScale);
-  // create a groyp to gold the axis elements
-  let xAxisGroup = vizHousingIndex.append("g").attr("class", "xaxis");
-  // tell d3 to fill the group with the axis elements
-  xAxisGroup.call(xAxis);
-  // position the axis at the bottom of the svg
-  xAxisGroup.attr("transform", "translate(0, "+ (hMap-xPadding) +")");
+  console.log('here');
+  d3.csv("DATA/pop.csv").then(function (popData) {
 
-
-  let yScale = d3.scaleLinear().domain(yDomain).range([hMap-xPadding, xPadding]);
-  let yAxis = d3.axisLeft(yScale);
-  let yAxisGroup = vizHousingIndex.append("g").attr("class", "yaxis");
-  yAxisGroup.call(yAxis);
-  yAxisGroup.attr("transform", "translate("+xPadding+",0)");
-
-  let vizgroup = vizHousingIndex.append("g").attr("class", "vizgroup");
-
-  // createViz();
+    let xDomain = d3.extent(popData, function(datapoint){
+      var parseTime = d3.timeParse("%Y-%m-%d");
+      // console.log(parseTime(datapoint.DATE));
+      return parseTime(datapoint.DATE)
+    });
 
 
-  function createViz() {
-    let datagroups = vizgroup.selectAll(".datagroup").data(housingIndexData, function(d){
+    let yDomain = d3.extent(popData, function(datapoint){
+      var y = parseFloat(datapoint.HIPOP);
+      return y
+
+    });
+    // console.log(xDomain);
+    // console.log(yDomain);
+
+
+    var xPadding = 50;
+
+    let xScale = d3.scaleTime().domain(xDomain).range([xPadding,wMap - xPadding]);
+    // create axis for this scale
+    let xAxis = d3.axisBottom(xScale);
+    // create a groyp to gold the axis elements
+    let xAxisGroup = vizGraph.append("g").attr("class", "xaxis");
+    // tell d3 to fill the group with the axis elements
+    xAxisGroup.call(xAxis);
+    // position the axis at the bottom of the svg
+    xAxisGroup.attr("transform", "translate(0, "+ (hMap-xPadding) +")");
+
+  // thousands of people
+    let yScale = d3.scaleLinear().domain(yDomain).range([hMap-xPadding, xPadding]);
+    let yAxis = d3.axisLeft(yScale);
+    let yAxisGroup = vizGraph.append("g").attr("class", "yaxis");
+    yAxisGroup.call(yAxis);
+    yAxisGroup.attr("transform", "translate("+xPadding+",0)");
+
+    let vizgroup = vizGraph.append("g").attr("class", "vizgroup");
+
+    createPopViz();
+
+    function createPopViz() {
+      console.log("here3");
+      let datagroups = vizgroup.selectAll(".datagroup").data(popData, function(d){
+    // we return the value that should act as the datapoints key
+      return d.DATE;
+      });
+
+      let incomingDataGroups = datagroups.enter()
+        .append("g")
+        .attr("class", "datagroup")
+      ;
+
+      function getX(d) {
+        var parseTime = d3.timeParse("%Y-%m-%d");
+        // console.log(parseTime(datapoint.DATE));
+        // parseTime(d.DATE)
+        // console.log(xScale(parseTime(d.DATE)));
+        return xScale(parseTime(d.DATE))
+      }
+      function getY(d) {
+
+        var y = parseFloat(d.HIPOP);
+        // console.log(y);
+        return  yScale(y);
+      }
+
+      let lineMaker = d3.line()
+
+                          .x(getX)
+                          .y(getY)
+      ;
+
+
+      var div = d3.select("body").append("div")
+         .attr("class", "tooltip-donut")
+         .style("opacity", 0);
+
+      let theSituation = vizGraph.datum(popData);
+      theSituation.append("path")
+          .classed("pop", true)
+          .attr("d", lineMaker)
+          .attr("fill", "none")
+          .attr("stroke-width", "5")
+          .attr("stroke", "black")
+
+    }
+
+  })
+
+}
+
+
+function airbnb() {
+  let vizGraph02 = d3.select("#airGraph").append("svg")
+      .style("width", wMap)
+      .style("height", hMap)
+      .style("background-color", "white")
+      .attr("class", "graphContainerSVG")
+  ;
+
+  d3.csv("DATA/listingLocation.csv").then(function (listingData) {
+    // console.log(housingIndexData);
+
+    let xDomain = d3.extent(listingData, function(datapoint){
+      var parseTime = d3.timeParse("%Y-%m-%d");
+      // console.log(parseTime(datapoint.DATE));
+      return parseTime(datapoint.hostStart)
+    });
+
+
+    // let yDomain = d3.extent(listingData, function(datapoint){
+    //   var y = parseFloat(datapoint.HIPOP);
+    //   return y
+    //
+    // });
+    // console.log(xDomain);
+    // console.log(yDomain);
+
+
+    var xPadding = 50;
+
+    let xScale = d3.scaleTime().domain(xDomain).range([xPadding,wMap - xPadding]);
+    // create axis for this scale
+    let xAxis = d3.axisBottom(xScale);
+    // create a groyp to gold the axis elements
+    let xAxisGroup = vizGraph02.append("g").attr("class", "xaxis");
+    // tell d3 to fill the group with the axis elements
+    xAxisGroup.call(xAxis);
+    // position the axis at the bottom of the svg
+    xAxisGroup.attr("transform", "translate(0, "+ (hMap-xPadding) +")");
+
+  // thousands of people
+    // let yScale = d3.scaleLinear().domain(yDomain).range([hMap-xPadding, xPadding]);
+    // let yAxis = d3.axisLeft(yScale);
+    // let yAxisGroup = vizGraph02.append("g").attr("class", "yaxis");
+    // yAxisGroup.call(yAxis);
+    // yAxisGroup.attr("transform", "translate("+xPadding+",0)");
+
+    // let vizgroup = vizGraph02.append("g").attr("class", "vizgroup");
+
+
+
+    let circles = vizGraph02.selectAll(".circ").data(listingData).enter().append("circle")
+                          .attr("r", function (d) {
+                            if (isNaN(d.price) ) {
+                              return 10;
+                            }else {
+
+                              return d.price/10
+                            }
+                          })
+                          .attr("cx", function (d) {
+                            var parseTime = d3.timeParse("%Y-%m-%d");
+
+                            return xScale(parseTime(d.hostStart))
+                          })
+                          .attr("cy", 300)
+                          .attr("opacity", "0.3")
+                          .attr("fill", function (d) {
+                            if (d.propType == 'Condominium') {
+                              return "#66B032"
+                            }else if (d.propType == 'Apartment') {
+                              return "#092834"
+                            }else if (d.propType == 'House') {
+                              return "#347B98"
+                            }else {
+                              return "grey"
+                            }
+                          })
+
+
+    ;
+})
+}
+
+function housing() {
+  let vizGraph03 = d3.select("#buildingGraph").append("svg")
+        .style("width", wMap)
+        .style("height", hMap)
+        .style("background-color", "white")
+        .attr("class", "graphContainerSVG")
+    ;
+
+
+  d3.csv("DATA/homeBuilding.csv").then(function (homeBuildingData) {
+    // console.log(housingIndexData);
+
+    let xDomain = d3.extent(homeBuildingData, function(datapoint){
+      var parseTime = d3.timeParse("%Y-%m-%d");
+      // console.log(parseTime(datapoint.DATE));
+      return parseTime(datapoint.DATE)
+    });
+
+
+    let yDomain = d3.extent(homeBuildingData, function(datapoint){
+      var y = parseFloat(datapoint.HIBPPRIV);
+      return y
+
+    });
+    // console.log(xDomain);
+    // console.log(yDomain);
+
+
+    var xPadding = 50;
+
+    let xScale = d3.scaleTime().domain(xDomain).range([xPadding,wMap - xPadding]);
+    // create axis for this scale
+    let xAxis = d3.axisBottom(xScale);
+    // create a groyp to gold the axis elements
+    let xAxisGroup = vizGraph03.append("g").attr("class", "xaxis");
+    // tell d3 to fill the group with the axis elements
+    xAxisGroup.call(xAxis);
+    // position the axis at the bottom of the svg
+    xAxisGroup.attr("transform", "translate(0, "+ (hMap-xPadding) +")");
+
+    let yScale = d3.scaleLinear().domain(yDomain).range([hMap-xPadding, xPadding]);
+    let yAxis = d3.axisLeft(yScale);
+    let yAxisGroup = vizGraph03.append("g").attr("class", "yaxis");
+    yAxisGroup.call(yAxis);
+    yAxisGroup.attr("transform", "translate("+xPadding+",0)");
+
+    // let vizgroup = vizGraph03.append("g").attr("class", "vizgroup");
+
+
+    let datagroups = vizGraph03.selectAll(".datagroup").data(homeBuildingData, function(d){
   // we return the value that should act as the datapoints key
     return d.DATE;
     });
@@ -175,30 +402,57 @@ d3.csv("DATA/HISTHPI.csv").then(function (housingIndexData) {
     }
     function getY(d) {
 
-      var y = parseFloat(d.HISTHPI);
+      var y = parseFloat(d.HIBPPRIV);
       // console.log(y);
-      return hMap-y
+      return  yScale(y);
     }
 
     let lineMaker = d3.line()
+
                         .x(getX)
                         .y(getY)
     ;
 
-    let theSituation = vizHousingIndex.datum(housingIndexData);
+    let theSituation = vizGraph03.datum(homeBuildingData);
     theSituation.append("path")
+        .classed("housing", true)
         .attr("d", lineMaker)
         .attr("fill", "none")
         .attr("stroke", "black")
+
     ;
 
+  })
 
-  }
+}
+population();
+airbnb();
+housing();
 
-  setTimeout(function () {
-    console.log('look');
-  }, 4000);
-})
+
+document.getElementById("buttonA").addEventListener("click", function () {
+  d3.select('.pop').attr("stroke", "#66B032")
+  document.getElementById('popGraph').scrollIntoView();
+});
+// document.getElementById("buttonA").addEventListener("mouseout", resetButtons);
+
+document.getElementById("buttonB").addEventListener("click", function () {
+  document.getElementById('airGraph').scrollIntoView();
+
+});
+// document.getElementById("buttonB").addEventListener("mouseout", resetButtons);
+
+document.getElementById("buttonC").addEventListener("click", function () {
+  d3.select('.housing').attr("stroke", "#092834")
+  document.getElementById('buildingGraph').scrollIntoView();
+
+});
+// document.getElementById("buttonC").addEventListener("mouseout", resetButtons);
+
+
+
+
+
 
 // location pin
 // <svg class="svg-icon" viewBox="0 0 20 20">
