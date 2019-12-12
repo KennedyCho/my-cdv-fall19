@@ -79,9 +79,9 @@ I really liked the map I created however, I was simply unable to include the fea
 
 In order to cut down the size of my data file, I used the pandas library to filter the file listings.csv. Each entry inlcuded the title of the AirBnb listing, latitude, longitude, the date the host joined AirBnb, and the property type. 
 
-![Image of graph 1](https://octodex.github.com/images/yaktocat.png)
-![Image of graph 2](https://octodex.github.com/images/yaktocat.png)
-![Image of graph 3](https://octodex.github.com/images/yaktocat.png)
+![Image of graph 1](https://github.com/KennedyCho/my-cdv-fall19/blob/master/my-work/DATA_STORY/1.png)
+![Image of graph 2](https://github.com/KennedyCho/my-cdv-fall19/blob/master/my-work/DATA_STORY/2.png)
+![Image of graph 3](https://github.com/KennedyCho/my-cdv-fall19/blob/master/my-work/DATA_STORY/3.png)
 
 ```
 import pandas as pd
