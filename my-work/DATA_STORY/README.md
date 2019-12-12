@@ -17,6 +17,27 @@ Local media coverage of rising housing prices cite many things as the cause howe
 make website 
 edit csv data 
 
+```
+import pandas as pd
+
+dataFile = pd.read_csv("listings.csv", index_col = 'id')
+
+room_type = list(dataFile['room_type'])
+name = list(dataFile['name'])
+lat = list(dataFile['latitude'])
+lon = list(dataFile['longitude'])
+price = list(dataFile['price'])
+hostStartdate = list(dataFile['host_since'])
+propType = list(dataFile['property_type'])
+
+locationList = list(zip(name, lat, lon, price, hostStartdate, propType))
+
+dataFrame = pd.DataFrame(data=locationList, columns=['name','latitude', 'longitude', 'price', 'hostStart','propType'])
+
+dataFrame.to_csv('listingLocation.csv',index=True,header=True)
+
+```
+
 **CHALLENGES**
 choosing right graphs 
 making diverse choices 
@@ -27,10 +48,4 @@ map locations of airbnbs
 **IMPROVEMENTS**
 Overall, I don't feel that my data visualization completely achieved 
 
-```python
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
-```
+
