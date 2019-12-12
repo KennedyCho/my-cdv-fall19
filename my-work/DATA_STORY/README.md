@@ -14,8 +14,9 @@ Following the 2008 recession, housing markets everywhere took several years to f
 Local media coverage of rising housing prices cite many things as the cause however, a popular reason is the substantial growth in short-term vacation rentals popping up all across the islands. The correlation between these two do not seem obvious to me nor do I see its apparent legitimacy. Local legislation, such as Bill 89, are examples of this idea creating real life consequences. Bill 89 seeks to limit the number of vacation rentals within the City and County of Honolulu (this does not apply statewide just within the county). For local residents operating these rentals, this would take away a valuable source of income. 
 
 **PRODUCTION**
-make website 
-edit csv data 
+map out website 
+
+In order to cut down the size of my data file, I used the pandas library to filter the file listings.csv. Each entry inlcuded the title of the AirBnb listing, latitude, longitude, the date the host joined AirBnb, and the property type. 
 
 ```
 import pandas as pd
@@ -44,6 +45,8 @@ making diverse choices
 
 **COMPROMISES**
 map locations of airbnbs
+comparisons 
+
 
 **IMPROVEMENTS**
 Overall, I don't feel that my data visualization completely achieved 
